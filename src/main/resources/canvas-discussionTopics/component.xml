@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+~  Copyright (c) 2016, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+~
+~  WSO2 Inc. licenses this file to you under the Apache License,
+~  Version 2.0 (the "License"); you may not use this file except
+~  in compliance with the License.
+~  You may obtain a copy of the License at
+~
+~   http://www.apache.org/licenses/LICENSE-2.0
+~
+~  Unless required by applicable law or agreed to in writing,
+~  software distributed under the License is distributed on an
+~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~  KIND, either express or implied.  See the License for the
+~  specific language governing permissions and limitations
+~  under the License.
+-->
+<component name="canvas-discussionTopics" type="synapse/template">
+    <subComponents>
+        <component name="createDiscussionTopic">
+            <file>createDiscussionTopic.xml</file>
+            <description>Create an new discussion topic for the course.</description>
+        </component>
+        <component name="listDiscussionTopics">
+            <file>listDiscussionTopics.xml</file>
+            <description>Returns the paginated list of discussion topics for this course.
+            </description>
+        </component>
+        <component name="getDiscussionTopic">
+            <file>getDiscussionTopic.xml</file>
+            <description>Returns data on an individual discussion topic.</description>
+        </component>
+        <component name="createEntry">
+            <file>createEntry.xml</file>
+            <description>Create a new entry in a discussion topic.</description>
+        </component>
+        <component name="updateEntry">
+            <file>updateEntry.xml</file>
+            <description>Update an existing discussion entry.</description>
+        </component>
+        <component name="listEntries">
+            <file>listEntries.xml</file>
+            <description>Retrieve a paginated list of discussion entries.</description>
+        </component>
+        <component name="deleteEntry">
+            <file>deleteEntry.xml</file>
+            <description>Delete a discussion entry.</description>
+        </component>
+    </subComponents>
+</component>
