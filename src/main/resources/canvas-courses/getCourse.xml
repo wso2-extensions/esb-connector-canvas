@@ -38,7 +38,7 @@
         <script language="js">
             <![CDATA[
                 var include = mc.getProperty('uri.var.include');
-                 var urlQuery = '';
+                var urlQuery = '';
                 
                 if (include != null && include.trim() != ""){
 					// If mulitple items are sent.

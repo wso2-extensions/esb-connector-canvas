@@ -1,7 +1,7 @@
 {
-    "accessToken": "%s(accessToken)",
-    "apiUrl": "%s(apiUrl)",
-    "courseId": "%s(courseId)",
-    "topicId": "%s(topicId)",
-	"entryId":"INVALID"
+  "accessToken": "%s(accessToken)",
+  "apiUrl": "%s(apiUrl)",
+  "courseId": "%s(courseId)",
+  "topicId": "%s(topicId)",
+  "entryId": "INVALID"
 }

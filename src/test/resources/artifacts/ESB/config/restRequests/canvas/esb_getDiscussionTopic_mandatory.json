@@ -1,6 +1,6 @@
 {
-	"apiUrl":"%s(apiUrl)",
-	"accessToken":"%s(accessToken)",
-	"courseId":"%s(courseId)",
-	"topicId": "%s(topicId)"
+  "apiUrl": "%s(apiUrl)",
+  "accessToken": "%s(accessToken)",
+  "courseId": "%s(courseId)",
+  "topicId": "%s(topicId)"
 }

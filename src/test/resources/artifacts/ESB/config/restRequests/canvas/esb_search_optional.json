@@ -1,5 +1,5 @@
 {
-"apiUrl":"%s(apiUrl)",
-"accessToken":"%s(accessToken)",
-"context":"%s(contextCode)"
+  "apiUrl": "%s(apiUrl)",
+  "accessToken": "%s(accessToken)",
+  "context": "%s(contextCode)"
 }

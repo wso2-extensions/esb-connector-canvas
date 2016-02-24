@@ -1,5 +1,5 @@
 {
-    "accessToken": "%s(accessToken)",
-    "apiUrl": "%s(apiUrl)",
-	"include": "term,sections"
+  "accessToken": "%s(accessToken)",
+  "apiUrl": "%s(apiUrl)",
+  "include": "term,sections"
 }

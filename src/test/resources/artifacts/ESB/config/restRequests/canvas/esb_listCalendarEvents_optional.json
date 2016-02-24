@@ -1,6 +1,6 @@
 {
-"apiUrl":"%s(apiUrl)",
-"accessToken":"%s(accessToken)",
-"allEvents":"true",
-"perPage":"4"
+  "apiUrl": "%s(apiUrl)",
+  "accessToken": "%s(accessToken)",
+  "allEvents": "true",
+  "perPage": "4"
 }

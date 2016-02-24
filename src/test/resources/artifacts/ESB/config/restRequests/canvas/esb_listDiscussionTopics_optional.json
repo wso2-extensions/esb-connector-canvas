@@ -1,7 +1,7 @@
 {
-	"apiUrl":"%s(apiUrl)",
-	"accessToken":"%s(accessToken)",
-	"courseId":"%s(courseId)",
-	"orderBy": "position",
-    "scope": "unlocked"
+  "apiUrl": "%s(apiUrl)",
+  "accessToken": "%s(accessToken)",
+  "courseId": "%s(courseId)",
+  "orderBy": "position",
+  "scope": "unlocked"
 }

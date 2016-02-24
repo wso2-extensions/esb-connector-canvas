@@ -1,5 +1,5 @@
 {
-"apiUrl":"%s(apiUrl)",
-"accessToken":"%s(accessToken)",
-"calendarEventId":"%s(calenderEventId)"
+  "apiUrl": "%s(apiUrl)",
+  "accessToken": "%s(accessToken)",
+  "calendarEventId": "%s(calenderEventId)"
 }
