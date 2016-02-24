@@ -142,166 +142,166 @@
         <!-- Building payload for params -->
         <script language="js">
             <![CDATA[
-		  		var title = mc.getProperty("uri.var.title");
-	  			var message = mc.getProperty("uri.var.message");
-	  			var discussionType = mc.getProperty("uri.var.discussionType");
-	  			var published = mc.getProperty("uri.var.published");
-	  			var delayedPostAt = mc.getProperty("uri.var.delayedPostAt");
-	  			var lockAt = mc.getProperty("uri.var.lockAt");
-	  			var podcastEnabled = mc.getProperty("uri.var.podcastEnabled");
-	  			var podcastHasStudentPosts = mc.getProperty("uri.var.podcastHasStudentPosts");
-	  			var requireInitialPost = mc.getProperty("uri.var.requireInitialPost");
-	  			var isAnnouncement = mc.getProperty("uri.var.isAnnouncement");
-	  			var positionAfter = mc.getProperty("uri.var.positionAfter");
-				var groupCategoryId = mc.getProperty("uri.var.groupCategoryId");
-				var assignmentName = mc.getProperty("uri.var.assignmentName");
-	  			var assignmentPosition = mc.getProperty("uri.var.assignmentPosition");
-	  			var assignmentSubmissionTypes = mc.getProperty("uri.var.assignmentSubmissionTypes");
-	  			var assignmentAllowedExtensions = mc.getProperty("uri.var.assignmentAllowedExtensions");
-	  			var assignmentTurnitinEnabled = mc.getProperty("uri.var.assignmentTurnitinEnabled");
-	  			var assignmentTurnitinSettings = mc.getProperty("uri.var.assignmentTurnitinSettings");
-	  			var assignmentIntegrationData = mc.getProperty("uri.var.assignmentIntegrationData");
-	  			var assignmentIntegrationId = mc.getProperty("uri.var.assignmentIntegrationId");
-	  			var assignmentPeerReviews = mc.getProperty("uri.var.assignmentPeerReviews");
-	  			var assignmentAutomaticPeerReviews = mc.getProperty("uri.var.assignmentAutomaticPeerReviews");
-	  			var assignmentNotifyOfUpdate = mc.getProperty("uri.var.assignmentNotifyOfUpdate");
-	  		    var assignmentGroupCategoryId = mc.getProperty("uri.var.assignmentGroupCategoryId");
-				var assignmentGradeGroupStudentsIndividually = mc.getProperty("uri.var.assignmentGradeGroupStudentsIndividually");
-				var assignmentExternalToolTagAttributes = mc.getProperty("uri.var.assignmentExternalToolTagAttributes");
-	  			var assignmentPointsPossible = mc.getProperty("uri.var.assignmentPointsPossible");
-	  			var assignmentGradingType = mc.getProperty("uri.var.assignmentGradingType");
-	  			var assignmentDueAt = mc.getProperty("uri.var.assignmentDueAt");
-	  			var assignmentLockAt = mc.getProperty("uri.var.assignmentLockAt");
-	  			var assignmentUnlockAt = mc.getProperty("uri.var.assignmentUnlockAt");
-	  			var assignmentDescription = mc.getProperty("uri.var.assignmentDescription");
-	  			var assignmentAssignmentGroupId = mc.getProperty("uri.var.assignmentAssignmentGroupId");
-	  			var assignmentMuted = mc.getProperty("uri.var.assignmentMuted");
-	  			var assignmentAssignmentOverrides = mc.getProperty("uri.var.assignmentAssignmentOverrides");
-	  			var assignmentOnlyVisibleToOverrides = mc.getProperty("uri.var.assignmentOnlyVisibleToOverrides");
-	  			var assignmentPublished = mc.getProperty("uri.var.assignmentPublished");
-				var assignmentGradingStandardId = mc.getProperty("uri.var.assignmentGradingStandardId");
-	  				
-	  			var	payload = {};
-	  				
-	  			if (title != null && title != ""){
-	  				payload ["title"] = title;
-	  			}
-        		if (message != null && message != ""){
-	  				payload ["message"] = message;
-	  			}
-	  			if (discussionType != null && discussionType != ""){
-	  				payload ["discussion_type"] = discussionType;
-	  			}
-	  			if (published != null && published != ""){
-	  				payload ["published"] = published;
-	  			}
-	  			if (delayedPostAt != null && delayedPostAt != ""){
-	  				payload ["delayed_post_at"] = delayedPostAt;
-	  			}
-	  			if (lockAt != null && lockAt != ""){
-	  				payload ["lock_at"] = lockAt;
-	  			}
-	  			if (podcastEnabled != null && podcastEnabled != ""){
-	  				payload ["podcast_enabled"] = podcastEnabled;
-	  			}
-	  			if (podcastHasStudentPosts != null && podcastHasStudentPosts != ""){
-	  				payload ["podcast_has_student_posts"] = podcastHasStudentPosts;
-	  			}
-	  			if (requireInitialPost != null && requireInitialPost != ""){
-	  				payload ["require_initial_post"] = requireInitialPost;
-	  			}
-	  			if (isAnnouncement != null && isAnnouncement != ""){
-	  				payload ["is_announcement"] = isAnnouncement;
-	  			}
-	  			if (positionAfter != null && positionAfter != ""){
-	  				payload ["position_after"] = positionAfter;
-	  			}
-	  			if (groupCategoryId != null && groupCategoryId != ""){
-	  				payload ["group_category_id"] = groupCategoryId;
-	  			}
-	  			if (assignmentName != null && assignmentName != ""){
-	  				payload ["assignment[name]"] = assignmentName;
-	  			}
-        		if (assignmentPosition != null && assignmentPosition != ""){
-	  				payload ["assignment[position]"] = assignmentPosition;
-	  			}
-	  			if (assignmentSubmissionTypes != null && assignmentSubmissionTypes != ""){
-	  				var submissionTypesArray = eval('(' + assignmentSubmissionTypes + ')');
-	  				payload ["assignment[submission_types]"] = ''+submissionTypesArray;
-	  			}
-	  			if (assignmentAllowedExtensions != null && assignmentAllowedExtensions != ""){
-	  				var extensionArray = eval('(' + assignmentAllowedExtensions + ')');
-	  				payload ["assignment[allowed_extensions]"] = ''+extensionArray;
-	  			}
-	  			if (assignmentTurnitinEnabled != null && assignmentTurnitinEnabled != ""){
-	  				payload ["assignment[turnitin_enabled]"] = assignmentTurnitinEnabled;
-	  			}
-	  			if (assignmentTurnitinSettings != null && assignmentTurnitinSettings != ""){
-	  				payload ["assignment[turnitin_settings]"] = assignmentTurnitinSettings;
-	  			}
-	  			if (assignmentIntegrationData != null && assignmentIntegrationData != ""){
-	  				payload ["assignment[integration_data]"] = eval('(' + assignmentIntegrationData + ')');
-	  			}
-	  			if (assignmentIntegrationId != null && assignmentIntegrationId != ""){
-	  				payload ["assignment[integration_id]"] = assignmentIntegrationId;
-	  			}
-	  			if (assignmentPeerReviews != null && assignmentPeerReviews != ""){
-	  				payload ["assignment[peer_reviews]"] = assignmentPeerReviews;
-	  			}
-	  			if (assignmentAutomaticPeerReviews != null && assignmentAutomaticPeerReviews != ""){
-	  				payload ["assignment[automatic_peer_reviews]"] = assignmentAutomaticPeerReviews;
-	  			}
-	  			if (assignmentNotifyOfUpdate != null && assignmentNotifyOfUpdate != ""){
-	  				payload ["assignment[notify_of_update]"] = assignmentNotifyOfUpdate;
-	  			}
-	  			if (assignmentGroupCategoryId != null && assignmentGroupCategoryId != ""){
-	  				payload ["assignment[group_category_id]"] = assignmentGroupCategoryId;
-	  			}
-	  			if (assignmentGradeGroupStudentsIndividually != null && assignmentGradeGroupStudentsIndividually != ""){
-	  				payload ["assignment[grade_group_students_individually]"] = assignmentGradeGroupStudentsIndividually;
-	  			}
-        		if (assignmentExternalToolTagAttributes != null && assignmentExternalToolTagAttributes != ""){
-	  				payload ["assignment[external_tool_tag_attributes]"] = assignmentExternalToolTagAttributes;
-	  			}
-	  			if (assignmentPointsPossible != null && assignmentPointsPossible != ""){
-	  				payload ["assignment[points_possible]"] = assignmentPointsPossible;
-	  			}
-	  			if (assignmentGradingType != null && assignmentGradingType != ""){
-	  				payload ["assignment[grading_type]"] = assignmentGradingType;
-	  			}
-	  			if (assignmentDueAt != null && assignmentDueAt != ""){
-	  				payload ["assignment[due_at]"] = assignmentDueAt;
-	  			}
-	  			if (assignmentLockAt != null && assignmentLockAt != ""){
-	  				payload ["assignment[lock_at]"] = assignmentLockAt;
-	  			}
-	  			if (assignmentUnlockAt != null && assignmentUnlockAt != ""){
-	  				payload ["assignment[unlock_at]"] = assignmentUnlockAt;
-	  			}
-	  			if (assignmentDescription != null && assignmentDescription != ""){
-	  				payload ["assignment[description]"] = assignmentDescription;
-	  			}
-	  			if (assignmentAssignmentGroupId != null && assignmentAssignmentGroupId != ""){
-	  				payload ["assignment[assignment_group_id]"] = assignmentAssignmentGroupId;
-	  			}
-	  			if (assignmentMuted != null && assignmentMuted != ""){
-	  				payload ["assignment[muted]"] = assignmentMuted;
-	  			}
-	  			if (assignmentAssignmentOverrides != null && assignmentAssignmentOverrides != ""){
-	  				payload ["assignment[assignment_overrides]"] = eval('(' + assignmentAssignmentOverrides + ')');
-	  			}
-	  			if (assignmentOnlyVisibleToOverrides != null && assignmentOnlyVisibleToOverrides != ""){
-	  				payload ["assignment[only_visible_to_overrides]"] = assignmentOnlyVisibleToOverrides;
-	  			}
-	  			if (assignmentPublished != null && assignmentPublished != ""){
-	  				payload ["assignment[published]"] = assignmentPublished;
-	  			}
-	  			if (assignmentGradingStandardId != null && assignmentGradingStandardId != ""){
-	  				payload ["assignment[grading_standard_id]"] = assignmentGradingStandardId;
-	  			}
-	  				
-				mc.setPayloadJSON(payload);
-				]]>
+                var title = mc.getProperty("uri.var.title");
+                var message = mc.getProperty("uri.var.message");
+                var discussionType = mc.getProperty("uri.var.discussionType");
+                var published = mc.getProperty("uri.var.published");
+                var delayedPostAt = mc.getProperty("uri.var.delayedPostAt");
+                var lockAt = mc.getProperty("uri.var.lockAt");
+                var podcastEnabled = mc.getProperty("uri.var.podcastEnabled");
+                var podcastHasStudentPosts = mc.getProperty("uri.var.podcastHasStudentPosts");
+                var requireInitialPost = mc.getProperty("uri.var.requireInitialPost");
+                var isAnnouncement = mc.getProperty("uri.var.isAnnouncement");
+                var positionAfter = mc.getProperty("uri.var.positionAfter");
+                var groupCategoryId = mc.getProperty("uri.var.groupCategoryId");
+                var assignmentName = mc.getProperty("uri.var.assignmentName");
+                var assignmentPosition = mc.getProperty("uri.var.assignmentPosition");
+                var assignmentSubmissionTypes = mc.getProperty("uri.var.assignmentSubmissionTypes");
+                var assignmentAllowedExtensions = mc.getProperty("uri.var.assignmentAllowedExtensions");
+                var assignmentTurnitinEnabled = mc.getProperty("uri.var.assignmentTurnitinEnabled");
+                var assignmentTurnitinSettings = mc.getProperty("uri.var.assignmentTurnitinSettings");
+                var assignmentIntegrationData = mc.getProperty("uri.var.assignmentIntegrationData");
+                var assignmentIntegrationId = mc.getProperty("uri.var.assignmentIntegrationId");
+                var assignmentPeerReviews = mc.getProperty("uri.var.assignmentPeerReviews");
+                var assignmentAutomaticPeerReviews = mc.getProperty("uri.var.assignmentAutomaticPeerReviews");
+                var assignmentNotifyOfUpdate = mc.getProperty("uri.var.assignmentNotifyOfUpdate");
+                var assignmentGroupCategoryId = mc.getProperty("uri.var.assignmentGroupCategoryId");
+                var assignmentGradeGroupStudentsIndividually = mc.getProperty("uri.var.assignmentGradeGroupStudentsIndividually");
+                var assignmentExternalToolTagAttributes = mc.getProperty("uri.var.assignmentExternalToolTagAttributes");
+                var assignmentPointsPossible = mc.getProperty("uri.var.assignmentPointsPossible");
+                var assignmentGradingType = mc.getProperty("uri.var.assignmentGradingType");
+                var assignmentDueAt = mc.getProperty("uri.var.assignmentDueAt");
+                var assignmentLockAt = mc.getProperty("uri.var.assignmentLockAt");
+                var assignmentUnlockAt = mc.getProperty("uri.var.assignmentUnlockAt");
+                var assignmentDescription = mc.getProperty("uri.var.assignmentDescription");
+                var assignmentAssignmentGroupId = mc.getProperty("uri.var.assignmentAssignmentGroupId");
+                var assignmentMuted = mc.getProperty("uri.var.assignmentMuted");
+                var assignmentAssignmentOverrides = mc.getProperty("uri.var.assignmentAssignmentOverrides");
+                var assignmentOnlyVisibleToOverrides = mc.getProperty("uri.var.assignmentOnlyVisibleToOverrides");
+                var assignmentPublished = mc.getProperty("uri.var.assignmentPublished");
+                var assignmentGradingStandardId = mc.getProperty("uri.var.assignmentGradingStandardId");
+
+                var	payload = {};
+
+                if (title != null && title != ""){
+                    payload ["title"] = title;
+                }
+                if (message != null && message != ""){
+                    payload ["message"] = message;
+                }
+                if (discussionType != null && discussionType != ""){
+                    payload ["discussion_type"] = discussionType;
+                }
+                if (published != null && published != ""){
+                    payload ["published"] = published;
+                }
+                if (delayedPostAt != null && delayedPostAt != ""){
+                    payload ["delayed_post_at"] = delayedPostAt;
+                }
+                if (lockAt != null && lockAt != ""){
+                    payload ["lock_at"] = lockAt;
+                }
+                if (podcastEnabled != null && podcastEnabled != ""){
+                    payload ["podcast_enabled"] = podcastEnabled;
+                }
+                if (podcastHasStudentPosts != null && podcastHasStudentPosts != ""){
+                    payload ["podcast_has_student_posts"] = podcastHasStudentPosts;
+                }
+                if (requireInitialPost != null && requireInitialPost != ""){
+                    payload ["require_initial_post"] = requireInitialPost;
+                }
+                if (isAnnouncement != null && isAnnouncement != ""){
+                    payload ["is_announcement"] = isAnnouncement;
+                }
+                if (positionAfter != null && positionAfter != ""){
+                    payload ["position_after"] = positionAfter;
+                }
+                if (groupCategoryId != null && groupCategoryId != ""){
+                    payload ["group_category_id"] = groupCategoryId;
+                }
+                if (assignmentName != null && assignmentName != ""){
+                    payload ["assignment[name]"] = assignmentName;
+                }
+                if (assignmentPosition != null && assignmentPosition != ""){
+                    payload ["assignment[position]"] = assignmentPosition;
+                }
+                if (assignmentSubmissionTypes != null && assignmentSubmissionTypes != ""){
+                    var submissionTypesArray = eval('(' + assignmentSubmissionTypes + ')');
+                    payload ["assignment[submission_types]"] = ''+submissionTypesArray;
+                }
+                if (assignmentAllowedExtensions != null && assignmentAllowedExtensions != ""){
+                    var extensionArray = eval('(' + assignmentAllowedExtensions + ')');
+                    payload ["assignment[allowed_extensions]"] = ''+extensionArray;
+                }
+                if (assignmentTurnitinEnabled != null && assignmentTurnitinEnabled != ""){
+                    payload ["assignment[turnitin_enabled]"] = assignmentTurnitinEnabled;
+                }
+                if (assignmentTurnitinSettings != null && assignmentTurnitinSettings != ""){
+                    payload ["assignment[turnitin_settings]"] = assignmentTurnitinSettings;
+                }
+                if (assignmentIntegrationData != null && assignmentIntegrationData != ""){
+                    payload ["assignment[integration_data]"] = eval('(' + assignmentIntegrationData + ')');
+                }
+                if (assignmentIntegrationId != null && assignmentIntegrationId != ""){
+                    payload ["assignment[integration_id]"] = assignmentIntegrationId;
+                }
+                if (assignmentPeerReviews != null && assignmentPeerReviews != ""){
+                    payload ["assignment[peer_reviews]"] = assignmentPeerReviews;
+                }
+                if (assignmentAutomaticPeerReviews != null && assignmentAutomaticPeerReviews != ""){
+                    payload ["assignment[automatic_peer_reviews]"] = assignmentAutomaticPeerReviews;
+                }
+                if (assignmentNotifyOfUpdate != null && assignmentNotifyOfUpdate != ""){
+                    payload ["assignment[notify_of_update]"] = assignmentNotifyOfUpdate;
+                }
+                if (assignmentGroupCategoryId != null && assignmentGroupCategoryId != ""){
+                    payload ["assignment[group_category_id]"] = assignmentGroupCategoryId;
+                }
+                if (assignmentGradeGroupStudentsIndividually != null && assignmentGradeGroupStudentsIndividually != ""){
+                    payload ["assignment[grade_group_students_individually]"] = assignmentGradeGroupStudentsIndividually;
+                }
+                if (assignmentExternalToolTagAttributes != null && assignmentExternalToolTagAttributes != ""){
+                    payload ["assignment[external_tool_tag_attributes]"] = assignmentExternalToolTagAttributes;
+                }
+                if (assignmentPointsPossible != null && assignmentPointsPossible != ""){
+                    payload ["assignment[points_possible]"] = assignmentPointsPossible;
+                }
+                if (assignmentGradingType != null && assignmentGradingType != ""){
+                    payload ["assignment[grading_type]"] = assignmentGradingType;
+                }
+                if (assignmentDueAt != null && assignmentDueAt != ""){
+                    payload ["assignment[due_at]"] = assignmentDueAt;
+                }
+                if (assignmentLockAt != null && assignmentLockAt != ""){
+                    payload ["assignment[lock_at]"] = assignmentLockAt;
+                }
+                if (assignmentUnlockAt != null && assignmentUnlockAt != ""){
+                    payload ["assignment[unlock_at]"] = assignmentUnlockAt;
+                }
+                if (assignmentDescription != null && assignmentDescription != ""){
+                    payload ["assignment[description]"] = assignmentDescription;
+                }
+                if (assignmentAssignmentGroupId != null && assignmentAssignmentGroupId != ""){
+                    payload ["assignment[assignment_group_id]"] = assignmentAssignmentGroupId;
+                }
+                if (assignmentMuted != null && assignmentMuted != ""){
+                    payload ["assignment[muted]"] = assignmentMuted;
+                }
+                if (assignmentAssignmentOverrides != null && assignmentAssignmentOverrides != ""){
+                    payload ["assignment[assignment_overrides]"] = eval('(' + assignmentAssignmentOverrides + ')');
+                }
+                if (assignmentOnlyVisibleToOverrides != null && assignmentOnlyVisibleToOverrides != ""){
+                    payload ["assignment[only_visible_to_overrides]"] = assignmentOnlyVisibleToOverrides;
+                }
+                if (assignmentPublished != null && assignmentPublished != ""){
+                    payload ["assignment[published]"] = assignmentPublished;
+                }
+                if (assignmentGradingStandardId != null && assignmentGradingStandardId != ""){
+                    payload ["assignment[grading_standard_id]"] = assignmentGradingStandardId;
+                }
+
+                mc.setPayloadJSON(payload);
+                ]]>
         </script>
         <property name="messageType" value="application/x-www-form-urlencoded"
                   scope="axis2"/>

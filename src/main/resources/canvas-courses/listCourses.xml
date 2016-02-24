@@ -39,7 +39,7 @@
                 var enrollmentType = mc.getProperty('uri.var.enrollmentType');
                 var include = mc.getProperty('uri.var.include');
                 var perPage = mc.getProperty('uri.var.perPage');
-				var page = mc.getProperty('uri.var.page');
+                var page = mc.getProperty('uri.var.page');
                 var state = mc.getProperty('uri.var.state');
                 var urlQuery = '';
                 if (enrollmentRole != null && enrollmentRole != ""){
@@ -49,43 +49,43 @@
                     urlQuery += 'enrollment_type=' + enrollmentType + '&';
                 }
                 if (include != null && include.trim() != ""){
-					// If mulitple items are sent.
-					if(include.indexOf(',') != -1){
-						var includeItems = include.split(',');
-						for(var i=0; i<includeItems.length; i++){
-							includeItems[i] = includeItems[i].trim();
-							if(includeItems[i] != ""){
-								urlQuery += 'include[]=' + includeItems[i] + '&';
-							}
-						}
-					} else {
-						urlQuery += 'include[]=' + include.trim() + '&';
-					}
+                    // If mulitple items are sent.
+                    if(include.indexOf(',') != -1){
+                        var includeItems = include.split(',');
+                        for(var i=0; i<includeItems.length; i++){
+                            includeItems[i] = includeItems[i].trim();
+                            if(includeItems[i] != ""){
+                                urlQuery += 'include[]=' + includeItems[i] + '&';
+                            }
+                        }
+                    } else {
+                        urlQuery += 'include[]=' + include.trim() + '&';
+                    }
                 }
                 if (perPage != null && perPage != ""){
                     urlQuery += 'per_page=' + perPage + '&';
                 }
-				if (page != null && page != ""){
+                if (page != null && page != ""){
                     urlQuery += 'page=' + page + '&';
                 }
                 if (state != null && state.trim() != ""){
-					// If mulitple items are sent.
-					if(state.indexOf(',') != -1){
-						var stateItems = state.split(',');
-						for(var i=0; i<stateItems.length; i++){
-							stateItems[i] = stateItems[i].trim();
-							if(stateItems[i] != ""){
-								urlQuery += 'state[]=' + stateItems[i] + '&';
-							}
-						}
-					} else {
-						urlQuery += 'state[]=' + state.trim() + '&';
-					}
+                    // If mulitple items are sent.
+                    if(state.indexOf(',') != -1){
+                        var stateItems = state.split(',');
+                        for(var i=0; i<stateItems.length; i++){
+                            stateItems[i] = stateItems[i].trim();
+                            if(stateItems[i] != ""){
+                                urlQuery += 'state[]=' + stateItems[i] + '&';
+                            }
+                        }
+                    } else {
+                        urlQuery += 'state[]=' + state.trim() + '&';
+                    }
                 }
                 // Prefix the urlQuery with '?' and remove the trailing '&'
                 if (urlQuery != "") {
                     urlQuery = '?' + urlQuery.substring(0, urlQuery.length-1);
-					mc.setProperty('uri.var.urlQuery', urlQuery);    
+                    mc.setProperty('uri.var.urlQuery', urlQuery);
                 }
             ]]>
         </script>

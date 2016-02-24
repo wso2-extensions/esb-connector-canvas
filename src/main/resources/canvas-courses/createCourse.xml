@@ -87,7 +87,6 @@
         <script language="js">
             <![CDATA[
                 var jsonPayload = new Object();
-                
                 var allowStudentForumAttachments = mc.getProperty('uri.var.allowStudentForumAttachments');
                 var allowStudentWikiEdits = mc.getProperty('uri.var.allowStudentWikiEdits');
                 var allowWikiComments = mc.getProperty('uri.var.allowWikiComments');

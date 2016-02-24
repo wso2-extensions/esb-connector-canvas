@@ -43,60 +43,60 @@
         <property name="uri.var.query" value="" type="STRING"/>
         <script language="js">
             <![CDATA[
-			var urlQuery=''+mc.getProperty("uri.var.query");
-			var type = mc.getProperty("uri.var.type");
-			var startDate = mc.getProperty("uri.var.startDate");
-			var endDate = mc.getProperty("uri.var.endDate");
-			var undated = mc.getProperty("uri.var.undated");
-			var allEvents = mc.getProperty("uri.var.allEvents");
-			var perPage = mc.getProperty("uri.var.perPage");
-			var page = mc.getProperty("uri.var.page");
-			var contextCodes=mc.getProperty("uri.var.contextCodes");	
-			var contextCodesParam = "";
-			
-			if(type != null && type!=""){
-				 urlQuery += 'type=' + type +'&';
-			}
-			if(startDate != null && startDate!=""){
-				 urlQuery += 'start_date=' + startDate +'&';
-			}
-			if(endDate != null && endDate!=""){
-				 urlQuery += 'end_date=' + endDate +'&';
-			}
-			if(undated != null && undated!=""){
-				 urlQuery += 'undated=' + undated +'&';
-			}
-			if(allEvents != null && allEvents!=""){
-				 urlQuery += 'all_events=' + allEvents +'&';
-			}
-			if(perPage != null && perPage!=""){
-				 urlQuery += 'per_page=' + perPage +'&';
-			}
-			if(page != null && page!=""){
-				 urlQuery += 'page=' + page +'&';
-			}
-			
-			if(contextCodes != null && contextCodes.trim() != ""){
-				if(contextCodes.indexOf(',') != -1){
-					var contextCodesArray = contextCodes.split(',');
-					for (var i = 0; i < contextCodesArray.length ; i++) {
-						contextCodesArray[i] = contextCodesArray[i].trim();
-						if(contextCodesArray[i] != ""){
-							contextCodesParam +='context_codes[]='+contextCodesArray[i]+'&';
-						}
-					}
-				}else{
-					contextCodesParam +='context_codes[]='+contextCodes.trim()+'&';
-				}
-			}
-			if(contextCodesParam != ""){
-				urlQuery += contextCodesParam;
-			}
-			if(urlQuery!=""){
-				urlQuery = '?' + urlQuery.substring(0,urlQuery.length -1);
-				mc.setProperty('uri.var.query',  encodeURI(urlQuery));
-			}
-		]]>
+            var urlQuery=''+mc.getProperty("uri.var.query");
+            var type = mc.getProperty("uri.var.type");
+            var startDate = mc.getProperty("uri.var.startDate");
+            var endDate = mc.getProperty("uri.var.endDate");
+            var undated = mc.getProperty("uri.var.undated");
+            var allEvents = mc.getProperty("uri.var.allEvents");
+            var perPage = mc.getProperty("uri.var.perPage");
+            var page = mc.getProperty("uri.var.page");
+            var contextCodes=mc.getProperty("uri.var.contextCodes");
+            var contextCodesParam = "";
+
+            if(type != null && type!=""){
+                 urlQuery += 'type=' + type +'&';
+            }
+            if(startDate != null && startDate!=""){
+                 urlQuery += 'start_date=' + startDate +'&';
+            }
+            if(endDate != null && endDate!=""){
+                 urlQuery += 'end_date=' + endDate +'&';
+            }
+            if(undated != null && undated!=""){
+                 urlQuery += 'undated=' + undated +'&';
+            }
+            if(allEvents != null && allEvents!=""){
+                 urlQuery += 'all_events=' + allEvents +'&';
+            }
+            if(perPage != null && perPage!=""){
+                 urlQuery += 'per_page=' + perPage +'&';
+            }
+            if(page != null && page!=""){
+                 urlQuery += 'page=' + page +'&';
+            }
+
+            if(contextCodes != null && contextCodes.trim() != ""){
+                if(contextCodes.indexOf(',') != -1){
+                    var contextCodesArray = contextCodes.split(',');
+                    for (var i = 0; i < contextCodesArray.length ; i++) {
+                        contextCodesArray[i] = contextCodesArray[i].trim();
+                        if(contextCodesArray[i] != ""){
+                            contextCodesParam +='context_codes[]='+contextCodesArray[i]+'&';
+                        }
+                    }
+                }else{
+                    contextCodesParam +='context_codes[]='+contextCodes.trim()+'&';
+                }
+            }
+            if(contextCodesParam != ""){
+                urlQuery += contextCodesParam;
+            }
+            if(urlQuery!=""){
+                urlQuery = '?' + urlQuery.substring(0,urlQuery.length -1);
+                mc.setProperty('uri.var.query',  encodeURI(urlQuery));
+            }
+        ]]>
         </script>
         <call>
             <endpoint>

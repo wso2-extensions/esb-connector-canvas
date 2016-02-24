@@ -41,23 +41,23 @@
                 var urlQuery = '';
                 
                 if (include != null && include.trim() != ""){
-					// If mulitple items are sent.
-					if(include.indexOf(',') != -1){
-						var includeItems = include.split(',');
-						for(var i=0; i<includeItems.length; i++){
-							includeItems[i] = includeItems[i].trim();
-							if(includeItems[i] != ""){
-								urlQuery += 'include[]=' + includeItems[i] + '&';
-							}
-						}
-					} else {
-						urlQuery += 'include[]=' + include.trim() + '&';
-					}
+                    // If mulitple items are sent.
+                    if(include.indexOf(',') != -1){
+                        var includeItems = include.split(',');
+                        for(var i=0; i<includeItems.length; i++){
+                            includeItems[i] = includeItems[i].trim();
+                            if(includeItems[i] != ""){
+                                urlQuery += 'include[]=' + includeItems[i] + '&';
+                            }
+                        }
+                    } else {
+                        urlQuery += 'include[]=' + include.trim() + '&';
+                    }
                 }
                 // Prefix the urlQuery with '?' and remove the trailing '&'
                 if (urlQuery != "") {
                     urlQuery = '?' + urlQuery.substring(0, urlQuery.length-1);
-					mc.setProperty('uri.var.urlQuery', urlQuery);    
+                    mc.setProperty('uri.var.urlQuery', urlQuery);
                 }
             ]]>
         </script>

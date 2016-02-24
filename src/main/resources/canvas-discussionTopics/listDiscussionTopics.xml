@@ -36,44 +36,44 @@
         <property name="uri.var.query" value=""/>
         <script language="js">
             <![CDATA[
-	    	var query=mc.getProperty("uri.var.query");
-			var orderBy=mc.getProperty("uri.var.orderBy");  
-			var scope=mc.getProperty("uri.var.scope"); 
-			var onlyAnnouncements=mc.getProperty("uri.var.onlyAnnouncements"); 
-			var searchTerm=mc.getProperty("uri.var.searchTerm"); 
-			var perPage=mc.getProperty("uri.var.perPage"); 
-			var page=mc.getProperty("uri.var.page"); 
-			
-			if(orderBy != null && orderBy!=""){
-				query +='order_by='+orderBy+'&';
-			}
-			
-			if(scope != null && scope!=""){
-				query +='scope='+scope+'&';
-			}
-			
-			if(onlyAnnouncements != null && onlyAnnouncements!=""){
-				query +='only_announcements='+onlyAnnouncements+'&';
-			}
-			
-			if(searchTerm != null && searchTerm!=""){
-				query +='search_term='+searchTerm+'&';
-			}
-			
-			if(perPage != null && perPage!=""){
-				query +='per_page='+perPage+'&';
-			}
-			
-			if(page != null && page!=""){
-				query +='page='+page+'&';
-			}
-			
-			if(query != ""){
-				query = '?'+query;
-				query = query.substring(0,query.length -1);
-				mc.setProperty('uri.var.query',  encodeURI(query));
-			}
-	    ]]>
+            var query=mc.getProperty("uri.var.query");
+            var orderBy=mc.getProperty("uri.var.orderBy");
+            var scope=mc.getProperty("uri.var.scope");
+            var onlyAnnouncements=mc.getProperty("uri.var.onlyAnnouncements");
+            var searchTerm=mc.getProperty("uri.var.searchTerm");
+            var perPage=mc.getProperty("uri.var.perPage");
+            var page=mc.getProperty("uri.var.page");
+
+            if(orderBy != null && orderBy!=""){
+                query +='order_by='+orderBy+'&';
+            }
+
+            if(scope != null && scope!=""){
+                query +='scope='+scope+'&';
+            }
+
+            if(onlyAnnouncements != null && onlyAnnouncements!=""){
+                query +='only_announcements='+onlyAnnouncements+'&';
+            }
+
+            if(searchTerm != null && searchTerm!=""){
+                query +='search_term='+searchTerm+'&';
+            }
+
+            if(perPage != null && perPage!=""){
+                query +='per_page='+perPage+'&';
+            }
+
+            if(page != null && page!=""){
+                query +='page='+page+'&';
+            }
+
+            if(query != ""){
+                query = '?'+query;
+                query = query.substring(0,query.length -1);
+                mc.setProperty('uri.var.query',  encodeURI(query));
+            }
+        ]]>
         </script>
         <call>
             <endpoint>

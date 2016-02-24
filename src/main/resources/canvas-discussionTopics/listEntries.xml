@@ -31,44 +31,44 @@
         <property name="uri.var.query" value=""/>
         <script language="js">
             <![CDATA[
-			 var urlQuery=mc.getProperty("uri.var.query");
-			 var ids=mc.getProperty("uri.var.ids");  
-			 var perPage=mc.getProperty("uri.var.perPage"); 
-			 var page=mc.getProperty("uri.var.page"); 
-			 var idsParam = "";
-							 
-			if(ids != null && ids.trim()!=""){
-				// If mulitple ids are sent.
-				if(ids.indexOf(',') != -1){
-					var idArray = ids.split(',');
-					for (var i = 0; i < idArray.length ; i++) {
-						idArray[i] =idArray[i].trim(); 
-						if(idArray[i] != ""){
-							idsParam += 'ids[]=' + idArray[i] + '&';
-						}
-					}				   
-				}else{   
-					idsParam +='ids[]='+ids.trim()+'&';
-				}
-			} 
-							 
-			if(idsParam != ""){
-				urlQuery = 'entry_list?'+idsParam;
-			}else{
-				urlQuery = 'entries?';
-			}
-			
-			if(perPage != null && perPage!=""){
-				urlQuery +='per_page='+perPage+'&';
-			}
-			
-			if(page != null && page!=""){
-				urlQuery +='page='+page+'&';
-			}
-			
-			urlQuery = urlQuery.substring(0,urlQuery.length -1);
-			mc.setProperty('uri.var.query', urlQuery);
-	    ]]>
+             var urlQuery=mc.getProperty("uri.var.query");
+             var ids=mc.getProperty("uri.var.ids");
+             var perPage=mc.getProperty("uri.var.perPage");
+             var page=mc.getProperty("uri.var.page");
+             var idsParam = "";
+
+            if(ids != null && ids.trim()!=""){
+                // If mulitple ids are sent.
+                if(ids.indexOf(',') != -1){
+                    var idArray = ids.split(',');
+                    for (var i = 0; i < idArray.length ; i++) {
+                        idArray[i] =idArray[i].trim();
+                        if(idArray[i] != ""){
+                            idsParam += 'ids[]=' + idArray[i] + '&';
+                        }
+                    }
+                }else{
+                    idsParam +='ids[]='+ids.trim()+'&';
+                }
+            }
+
+            if(idsParam != ""){
+                urlQuery = 'entry_list?'+idsParam;
+            }else{
+                urlQuery = 'entries?';
+            }
+
+            if(perPage != null && perPage!=""){
+                urlQuery +='per_page='+perPage+'&';
+            }
+
+            if(page != null && page!=""){
+                urlQuery +='page='+page+'&';
+            }
+
+            urlQuery = urlQuery.substring(0,urlQuery.length -1);
+            mc.setProperty('uri.var.query', urlQuery);
+        ]]>
         </script>
         <call>
             <endpoint>

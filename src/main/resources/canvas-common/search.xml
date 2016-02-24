@@ -59,34 +59,34 @@
                 }
                 if (exclude != null && exclude.trim() != ""){
                     // If mulitple items are sent.
-					if(exclude.indexOf(',') != -1){
-						var excludeItems = exclude.split(',');
-						for(var i=0; i<excludeItems.length; i++){
-							excludeItems[i] = excludeItems[i].trim();
-							if(excludeItems[i] != ""){
-								urlQuery += 'exclude[]=' + excludeItems[i] + '&';
-							}
-						}
-					} else {
-						urlQuery += 'exclude[]=' + exclude.trim() + '&';
-					}
+                    if(exclude.indexOf(',') != -1){
+                        var excludeItems = exclude.split(',');
+                        for(var i=0; i<excludeItems.length; i++){
+                            excludeItems[i] = excludeItems[i].trim();
+                            if(excludeItems[i] != ""){
+                                urlQuery += 'exclude[]=' + excludeItems[i] + '&';
+                            }
+                        }
+                    } else {
+                        urlQuery += 'exclude[]=' + exclude.trim() + '&';
+                    }
                 }
                 if (fromConversationId != null && fromConversationId != ""){
                     urlQuery += 'from_conversation_id=' + fromConversationId + '&';
                 }
                 if (permissions != null && permissions.trim() != ""){
                     // If mulitple items are sent.
-					if(permissions.indexOf(',') != -1){
-						var permissionItems = permissions.split(',');
-						for(var i=0; i<permissionItems.length; i++){
-							permissionItems[i] = permissionItems[i].trim();
-							if(permissionItems[i] != ""){
-								urlQuery += '&permissions[]=' + permissionItems[i] + '&';
-							}
-						}
-					} else {
-						urlQuery += 'permissions[]=' + permissions.trim() + '&';
-					}
+                    if(permissions.indexOf(',') != -1){
+                        var permissionItems = permissions.split(',');
+                        for(var i=0; i<permissionItems.length; i++){
+                            permissionItems[i] = permissionItems[i].trim();
+                            if(permissionItems[i] != ""){
+                                urlQuery += '&permissions[]=' + permissionItems[i] + '&';
+                            }
+                        }
+                    } else {
+                        urlQuery += 'permissions[]=' + permissions.trim() + '&';
+                    }
                 }
                 if (search != null && search != ""){
                     urlQuery += 'search=' + search + '&';
@@ -103,14 +103,14 @@
                 if (perPage != null && perPage != ""){
                     urlQuery += 'per_page=' + perPage + '&';
                 }
-				
-				if (page != null && page != ""){
+
+                if (page != null && page != ""){
                     urlQuery += 'page=' + page + '&';
                 }
                 // Prefix the urlQuery with '?' and remove the trailing '&'
                 if (urlQuery != "") {
                     urlQuery = '?' + urlQuery.substring(0, urlQuery.length-1);
-					mc.setProperty('uri.var.urlQuery', encodeURI(urlQuery));    
+                    mc.setProperty('uri.var.urlQuery', encodeURI(urlQuery));
                 }
             ]]>
         </script>
