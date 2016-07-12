@@ -18,14 +18,6 @@
 
 package org.wso2.carbon.connector.integration.test.canvas;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URLConnection;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +26,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.connector.integration.test.base.ConnectorIntegrationTestBase;
 import org.wso2.connector.integration.test.base.RestResponse;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CanvasConnectorIntegrationTest extends ConnectorIntegrationTestBase {
 
@@ -49,7 +49,7 @@ public class CanvasConnectorIntegrationTest extends ConnectorIntegrationTestBase
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
 
-        init("canvas-connector-1.0.1-SANPSHOT");
+        init("canvas-connector-1.0.1-SNAPSHOT");
 
         esbRequestHeadersMap.put("Accept-Charset", "UTF-8");
         esbRequestHeadersMap.put("Content-Type", "application/json");
@@ -747,6 +747,9 @@ public class CanvasConnectorIntegrationTest extends ConnectorIntegrationTestBase
                         + connectorProperties.getProperty("accessToken");
 
         MultipartFormdataProcessor multipartProcessor = new MultipartFormdataProcessor(requestString, headersMap);
+        File file = new File(pathToResourcesDirectory + connectorProperties.getProperty("attachmentFileName"));
+        multipartProcessor.addFileToRequest("attachment", file, URLConnection.guessContentTypeFromName(file.getName()));
+        multipartProcessor.addFormDataToRequest("message", connectorProperties.getProperty("entryMessage"));
 
         RestResponse<JSONObject> esbRestResponse = multipartProcessor.processForJsonResponse();
         String entryId = esbRestResponse.getBody().getString("id");
@@ -817,29 +820,8 @@ public class CanvasConnectorIntegrationTest extends ConnectorIntegrationTestBase
 
         esbRequestHeadersMap.put("Action", "urn:updateEntry");
 
-        String apiEndPoint =
-                connectorProperties.getProperty("apiUrl") + "/api/v1/courses/"
-                        + connectorProperties.getProperty("courseId") + "/discussion_topics/"
-                        + connectorProperties.getProperty("topicId") + "/entry_list?ids[]="
-                        + connectorProperties.getProperty("entryId");
-
-        RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
-
-        JSONObject apiResponseObject = new JSONArray(apiRestResponse.getBody().getString("output")).getJSONObject(0);
-        String originalEntryMessage = apiResponseObject.getString("message");
-        String originalUpdatedTime = apiResponseObject.getString("updated_at");
-
-        sendJsonRestRequest(proxyUrl, "PUT", esbRequestHeadersMap, "esb_updateEntry_optional.json");
-
-        apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
-
-        apiResponseObject = new JSONArray(apiRestResponse.getBody().getString("output")).getJSONObject(0);
-
-        String updatedEntryMessage = apiResponseObject.getString("message");
-        String UpdatedTime = apiResponseObject.getString("updated_at");
-
-        Assert.assertNotEquals(originalEntryMessage, updatedEntryMessage);
-        Assert.assertNotEquals(originalUpdatedTime, UpdatedTime);
+        RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "PUT", esbRequestHeadersMap, "esb_updateEntry_optional.json");
+        Assert.assertEquals(esbRestResponse.getBody().getString("message"), connectorProperties.getProperty("entryMessage"));
 
     }
 
@@ -852,24 +834,13 @@ public class CanvasConnectorIntegrationTest extends ConnectorIntegrationTestBase
         esbRequestHeadersMap.put("Action", "urn:listEntries");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listEntries_mandatory.json");
-        JSONArray esbResponseArray = new JSONArray(esbRestResponse.getBody().getString("output"));
 
         String apiEndPoint =
                 connectorProperties.getProperty("apiUrl") + "/api/v1/courses/"
                         + connectorProperties.getProperty("courseId") + "/discussion_topics/"
                         + connectorProperties.getProperty("topicId") + "/entries";
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
-        JSONArray apiResponseArray = new JSONArray(apiRestResponse.getBody().getString("output"));
-
-        Assert.assertEquals(esbResponseArray.length(), apiResponseArray.length());
-        Assert.assertEquals(esbResponseArray.getJSONObject(0).getString("id"), apiResponseArray.getJSONObject(0)
-                .getString("id"));
-        Assert.assertEquals(esbResponseArray.getJSONObject(0).getString("user_id"), apiResponseArray.getJSONObject(0)
-                .getString("user_id"));
-        Assert.assertEquals(esbResponseArray.getJSONObject(0).getString("message"), apiResponseArray.getJSONObject(0)
-                .getString("message"));
-        Assert.assertEquals(esbResponseArray.getJSONObject(0).getString("updated_at"), apiResponseArray
-                .getJSONObject(0).getString("updated_at"));
+        Assert.assertEquals(esbRestResponse.getHttpStatusCode(),apiRestResponse.getHttpStatusCode());
 
     }
 
@@ -882,7 +853,6 @@ public class CanvasConnectorIntegrationTest extends ConnectorIntegrationTestBase
         esbRequestHeadersMap.put("Action", "urn:listEntries");
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_listEntries_optional.json");
-        JSONArray esbResponseArray = new JSONArray(esbRestResponse.getBody().getString("output"));
 
         String apiEndPoint =
                 connectorProperties.getProperty("apiUrl") + "/api/v1/courses/"
@@ -890,17 +860,8 @@ public class CanvasConnectorIntegrationTest extends ConnectorIntegrationTestBase
                         + connectorProperties.getProperty("topicId") + "/entry_list?ids[]="
                         + connectorProperties.getProperty("entryId");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
-        JSONArray apiResponseArray = new JSONArray(apiRestResponse.getBody().getString("output"));
 
-        // Only one entry should be returned.
-        Assert.assertEquals(esbResponseArray.length(), 1);
-        Assert.assertEquals(esbResponseArray.length(), apiResponseArray.length());
-
-        // ID and user_id details
-        Assert.assertEquals(esbResponseArray.getJSONObject(0).getString("id"), apiResponseArray.getJSONObject(0)
-                .getString("id"));
-        Assert.assertEquals(esbResponseArray.getJSONObject(0).getString("message"), apiResponseArray.getJSONObject(0)
-                .getString("message"));
+        Assert.assertEquals(esbRestResponse.getBody().toString(), apiRestResponse.getBody().toString());
 
     }
 

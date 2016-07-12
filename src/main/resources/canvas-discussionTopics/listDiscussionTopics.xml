@@ -69,8 +69,7 @@
             }
 
             if(query != ""){
-                query = '?'+query;
-                query = query.substring(0,query.length -1);
+                query = '?' + query.toString().substring(0, query.toString().lastIndexOf("&"));
                 mc.setProperty('uri.var.query',  encodeURI(query));
             }
         ]]>
