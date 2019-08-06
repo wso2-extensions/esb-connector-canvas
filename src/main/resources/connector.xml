@@ -23,6 +23,8 @@
         <dependency component="canvas-courses"/>
         <dependency component="canvas-discussionTopics"/>
         <dependency component="canvas-common"/>
+        <dependency component="canvas-users"/>
+        <dependency component="canvas-enrollments"/>
         <description>wso2 canvas connector library</description>
     </component>
     <icon>icon/icon-small.gif</icon>
