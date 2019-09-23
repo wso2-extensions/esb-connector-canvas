@@ -17,25 +17,30 @@
 ~  under the uniqueId.
 -->
 <template name="createEnrollment" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="courseId"
+    <parameter name="sisCourseId"
                description="The course id."/>
     <parameter name="userId"
                description="The user id."/>
     <parameter name="type" description="The enrollment type."/>
     <parameter name="enrollmentState"
                description="The enrollment state."/>
-    
+    <parameter name="notify"
+               description="If true, a notification will be sent to the enrolled user. Notifications are not
+               sent by default."/>
     <sequence>
-        <property name="uri.var.courseId" expression="$func:courseId"/>
+        <property name="uri.var.sisCourseId" expression="$func:sisCourseId"/>
         <property name="uri.var.userId" expression="$func:userId"/>
         <property name="uri.var.type" expression="$func:type"/>
         <property name="uri.var.enrollmentState" expression="$func:enrollmentState"/>
+        <property name="uri.var.notify" expression="$func:notify"/>
+
         <script language="js">
         <![CDATA[
                 var jsonPayload = new Object();
                 var userId = mc.getProperty('uri.var.userId');
                 var type = mc.getProperty('uri.var.type');
                 var enrollmentState = mc.getProperty('uri.var.enrollmentState');
+                var notify = mc.getProperty('uri.var.notify');
 
                 if (userId != null && userId != ""){
                     jsonPayload["enrollment[user_id]"] = userId;
@@ -49,6 +54,9 @@
                     jsonPayload["enrollment[enrollment_state]"] = enrollmentState;
                 }
 
+                if (notify != null && notify != ""){
+                    jsonPayload["enrollment[notify]"] = notify;
+                }
                 mc.setPayloadJSON(jsonPayload);
             ]]>
         </script>
@@ -57,7 +65,7 @@
         <call>
             <endpoint>
                 <http method="post"
-                      uri-template="{uri.var.apiUrl}/courses/{+uri.var.courseId}/enrollments"/>
+                      uri-template="{uri.var.apiUrl}/courses/sis_course_id:{+uri.var.sisCourseId}/enrollments"/>
             </endpoint>
         </call>
         <!-- Remove custom Headers from the API Response -->
