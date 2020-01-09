@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+~  Copyright (c) 2019, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+~
+~  WSO2 Inc. uniqueIds this file to you under the Apache uniqueId,
+~  Version 2.0 (the "uniqueId"); you may not use this file except
+~  in compliance with the uniqueId.
+~  You may obtain a copy of the uniqueId at
+~
+~   http://www.apache.org/uniqueIds/uniqueId-2.0
+~
+~  Unless required by applicable law or agreed to in writing,
+~  software distributed under the uniqueId is distributed on an
+~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~  KIND, either express or implied.  See the uniqueId for the
+~  specific language governing permissions and limitations
+~  under the uniqueId.
+-->
+<template name="createEnrollment" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="sisCourseId"
+               description="The course id."/>
+    <parameter name="userId"
+               description="The user id."/>
+    <parameter name="type" description="The enrollment type."/>
+    <parameter name="enrollmentState"
+               description="The enrollment state."/>
+    <parameter name="notify"
+               description="If true, a notification will be sent to the enrolled user. Notifications are not
+               sent by default."/>
+    <sequence>
+        <property name="uri.var.sisCourseId" expression="$func:sisCourseId"/>
+        <property name="uri.var.userId" expression="$func:userId"/>
+        <property name="uri.var.type" expression="$func:type"/>
+        <property name="uri.var.enrollmentState" expression="$func:enrollmentState"/>
+        <property name="uri.var.notify" expression="$func:notify"/>
+
+        <script language="js">
+        <![CDATA[
+                var jsonPayload = new Object();
+                var userId = mc.getProperty('uri.var.userId');
+                var type = mc.getProperty('uri.var.type');
+                var enrollmentState = mc.getProperty('uri.var.enrollmentState');
+                var notify = mc.getProperty('uri.var.notify');
+
+                if (userId != null && userId != ""){
+                    jsonPayload["enrollment[user_id]"] = userId;
+                }
+                
+                if (type != null && type != ""){
+                    jsonPayload["enrollment[type]"] = type;
+                }
+                
+                if (enrollmentState != null && enrollmentState != ""){
+                    jsonPayload["enrollment[enrollment_state]"] = enrollmentState;
+                }
+
+                if (notify != null && notify != ""){
+                    jsonPayload["enrollment[notify]"] = notify;
+                }
+                mc.setPayloadJSON(jsonPayload);
+            ]]>
+        </script>
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
+        <property name="FORCE_POST_PUT_NOBODY" value="true" scope="axis2" type="BOOLEAN"/>
+        <call>
+            <endpoint>
+                <http method="post"
+                      uri-template="{uri.var.apiUrl}/courses/sis_course_id:{+uri.var.sisCourseId}/enrollments"/>
+            </endpoint>
+        </call>
+        <!-- Remove custom Headers from the API Response -->
+        <header name="ETag" action="remove" scope="transport"/>
+        <header name="P3P" action="remove" scope="transport"/>
+        <header name="X-Canvas-Meta" action="remove" scope="transport"/>
+        <header name="X-Canvas-User-Id" action="remove" scope="transport"/>
+        <header name="X-Frame-Options" action="remove" scope="transport"/>
+        <header name="X-Rack-Cache" action="remove" scope="transport"/>
+        <header name="X-Request-Context-Id" action="remove" scope="transport"/>
+        <header name="X-Runtime" action="remove" scope="transport"/>
+        <header name="X-Session-Id" action="remove" scope="transport"/>
+        <header name="X-UA-Compatible" action="remove" scope="transport"/>
+        <header name="Via" action="remove" scope="transport"/>
+        <header name="WWW-Authenticate" action="remove" scope="transport"/>
+    </sequence>
+</template>
