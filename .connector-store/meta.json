@@ -4,7 +4,7 @@
     "category": "Education",
     "documentationUrl": "https://docs.wso2.com/display/CONNECTORS/Canvas+Connector",
     "description": "The Canvas connector allows you to access the Canvas REST API through WSO2 ESB. Canvas is an open-source learning management system (LMS), allowing you to create and manage courses.",
-    "status": "Unsupported",
+    "status": "Active",
     "labels": [
         "connector"
     ],
